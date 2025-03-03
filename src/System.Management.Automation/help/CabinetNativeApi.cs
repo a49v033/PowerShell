@@ -70,10 +70,7 @@ namespace System.Management.Automation.Internal
             }
 
             // Free managed objects within 'if (disposing)' if needed
-            if (fdiContext != null)
-            {
-                fdiContext.Dispose();
-            }
+            fdiContext?.Dispose();
             // Free unmanaged objects here
             this.CleanUpDelegates();
 
@@ -546,7 +543,7 @@ namespace System.Management.Automation.Internal
 
         #region IO classes, structures, and enums
 
-        [FlagsAttribute]
+        [Flags]
         internal enum PermissionMode : int
         {
             None = 0x0000,
@@ -554,7 +551,7 @@ namespace System.Management.Automation.Internal
             Read = 0x0100
         }
 
-        [FlagsAttribute]
+        [Flags]
         internal enum OpFlags : int
         {
             RdOnly = 0x0000,
